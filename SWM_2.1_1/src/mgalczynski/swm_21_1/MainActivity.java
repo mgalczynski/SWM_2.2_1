@@ -17,7 +17,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ListView lv = (ListView) findViewById(R.id.listView);
-		final String[] arguments = getResources().getStringArray(R.array.enumeration);
+		final String[] arguments = getResources().getStringArray(
+				R.array.enumeration);
 		lv.setAdapter(new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, arguments));
 		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -26,19 +27,16 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 				final String item = (String) parent.getItemAtPosition(position);
-				view.animate().setDuration(2000).alpha(0)
-						.withEndAction(new Runnable() {
-							@Override
-							public void run() {
-								if(arguments[0].equals(item)){
-									Intent in = new Intent(MainActivity.this, Linear.class);
-									startActivity(in);
-								}else if(arguments[1].equals(item)){
-									Intent in = new Intent(MainActivity.this, ActivityLinear2.class);
-									startActivity(in);
-								} 
-							}
-						});
+
+				if (arguments[0].equals(item)) {
+					Intent in = new Intent(MainActivity.this, Linear.class);
+					startActivity(in);
+				} else if (arguments[1].equals(item)) {
+					Intent in = new Intent(MainActivity.this,
+							ActivityLinear2.class);
+					startActivity(in);
+				}
+
 			}
 		});
 	}
