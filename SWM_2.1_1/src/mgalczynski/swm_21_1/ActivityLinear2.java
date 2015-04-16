@@ -1,6 +1,7 @@
 package mgalczynski.swm_21_1;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Switch;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class ActivityLinear2 extends Activity {
@@ -27,6 +29,11 @@ public class ActivityLinear2 extends Activity {
             	EditText e = (EditText) findViewById(R.id.editText1);
             	String txt = e.getText().toString();
             	i.putExtra("data","Wpisano\n" + txt);
+            	Context context = getApplicationContext();
+            	CharSequence text = String.valueOf(txt.length());
+            	int duration = Toast.LENGTH_SHORT;
+            	Toast toast = Toast.makeText(context, text, duration);
+            	toast.show();
             	startActivity(i);
             }
         });
